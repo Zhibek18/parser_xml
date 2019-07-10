@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<papers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://www.example.com/papers"
+          xsi:schemaLocation="http://www.example.com/papers papers.xsd">
+    <paper title="Times" type="newspaper" monthly="true">
+        <chars>
+            <color>false</color>
+            <volume>50</volume>
+            <glossy></glossy>
+            <subscription-index>true</subscription-index>    <!--subscription index-->
+        </chars>
+    </paper>
+    <paper title="Cosmopolitan" type="magazine" monthly="true">
+        <chars>
+            <color>true</color>
+            <volume>60</volume>
+            <glossy>true</glossy>
+            <subscription-index>true</subscription-index>    <!--subscription index-->
+        </chars>
+    </paper>
+    <paper title="Space" type="booklet" monthly="false">
+        <chars>
+            <color>true</color>
+            <volume>7</volume>
+            <glossy>true</glossy>
+            <subscription-index></subscription-index>
+        </chars>
+    </paper>
+</papers>

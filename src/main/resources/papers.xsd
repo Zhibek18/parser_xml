@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/papers"
+        xmlns:tns="http://www.example.com/papers"
+        elementFormDefault="qualified">
+    <element name="papers">
+        <complexType>
+            <sequence>
+                <element    name="paper"
+                            type="tns:Paper"
+                            minOccurs="1"
+                            maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Paper">
+        <sequence>
+            <element name="chars"
+                        type="tns:Chars"
+                        minOccurs="1"
+                        maxOccurs="1"/>
+        </sequence>
+        <attribute name="title" use="required">
+            <simpleType>
+                <restriction base="ID">
+                    <pattern value="([\w]+){2,20}"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="type" use="required">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="newspaper"/>
+                    <enumeration value="magazine"/>
+                    <enumeration value="booklet"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="monthly" type="boolean" use="optional" default="false"/>
+    </complexType>
+    <complexType name="Chars">
+        <sequence>
+            <element name="color" type="boolean"/>
+            <element name="volume" type="positiveInteger"/>
+            <element name="glossy" type="boolean" default="false"/>
+            <element name="subscription-index" type="boolean" default="false"/>
+        </sequence>
+    </complexType>
+</schema>
