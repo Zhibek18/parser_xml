@@ -7,7 +7,7 @@
             <color>false</color>
             <volume>50</volume>
             <glossy></glossy>
-            <subscription-index>true</subscription-index>    <!--subscription index-->
+            <subscription>true</subscription>    <!--subscription index-->
         </chars>
     </paper>
     <paper title="Cosmopolitan" type="magazine" monthly="true">
@@ -15,15 +15,15 @@
             <color>true</color>
             <volume>60</volume>
             <glossy>true</glossy>
-            <subscription-index>true</subscription-index>    <!--subscription index-->
+            <subscription>true</subscription>    <!--subscription index-->
         </chars>
     </paper>
-    <paper title="Space" type="booklet" monthly="false">
+    <paper title="Space" type="booklet">
         <chars>
             <color>true</color>
             <volume>7</volume>
             <glossy>true</glossy>
-            <subscription-index></subscription-index>
+            <subscription></subscription>
         </chars>
     </paper>
 </papers>

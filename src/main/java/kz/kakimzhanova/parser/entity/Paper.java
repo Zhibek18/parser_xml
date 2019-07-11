@@ -4,6 +4,7 @@ public class Paper {
     private String title;
     private String type;
     private boolean monthly;
+    private Chars chars = new Chars();
     public String getTitle(){
         return title;
     }
@@ -27,18 +28,14 @@ public class Paper {
     public void setMonthly(boolean monthly) {
         this.monthly = monthly;
     }
-    public void setChars(boolean color, int volume, boolean glossy, boolean subscriptionIndex){
-        Chars chars = new Chars();
-        chars.color = color;
-        chars.glossy = glossy;
-        chars.volume = volume;
-        chars.subscriptionIndex = subscriptionIndex;
+    public Chars getChars(){
+        return chars;
     }
     public class Chars{
         private boolean color;
         private int volume;
         private boolean glossy;
-        private boolean subscriptionIndex;
+        private boolean subscription;
 
         public boolean isColor() {
             return color;
@@ -53,7 +50,7 @@ public class Paper {
         }
 
         public boolean isSubscriptionIndex() {
-            return subscriptionIndex;
+            return subscription;
         }
 
         public void setColor(boolean color) {
@@ -68,8 +65,28 @@ public class Paper {
             this.glossy = glossy;
         }
 
-        public void setSubscriptionIndex(boolean subscriptionIndex) {
-            this.subscriptionIndex = subscriptionIndex;
+        public void setSubscriptionIndex(boolean subscription) {
+            this.subscription = subscription;
         }
+
+        @Override
+        public String toString() {
+            return "Chars{" +
+                    "color=" + color +
+                    ", volume=" + volume +
+                    ", glossy=" + glossy +
+                    ", subscription=" + subscription +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Paper{" +
+                "title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", monthly=" + monthly +
+                ", chars=" + chars +
+                '}' + "\n";
     }
 }
