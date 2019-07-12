@@ -6,7 +6,7 @@
         <chars>
             <color>false</color>
             <volume>50</volume>
-            <glossy></glossy>
+            <glossy>false</glossy>
             <subscription>true</subscription>    <!--subscription index-->
         </chars>
     </paper>

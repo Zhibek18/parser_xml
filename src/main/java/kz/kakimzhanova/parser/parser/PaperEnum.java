@@ -1,4 +1,4 @@
-package kz.kakimzhanova.parser.parser.sax;
+package kz.kakimzhanova.parser.parser;
 
 public enum PaperEnum {
     PAPERS("papers"),

@@ -31,6 +31,11 @@ public class Paper {
     public Chars getChars(){
         return chars;
     }
+
+    public void setChars(Chars chars) {
+        this.chars = chars;
+    }
+
     public class Chars{
         private boolean color;
         private int volume;
@@ -49,7 +54,7 @@ public class Paper {
             return glossy;
         }
 
-        public boolean isSubscriptionIndex() {
+        public boolean isSubscription() {
             return subscription;
         }
 
@@ -65,7 +70,7 @@ public class Paper {
             this.glossy = glossy;
         }
 
-        public void setSubscriptionIndex(boolean subscription) {
+        public void setSubscription(boolean subscription) {
             this.subscription = subscription;
         }
 

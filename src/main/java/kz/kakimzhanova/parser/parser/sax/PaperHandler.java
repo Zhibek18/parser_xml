@@ -1,6 +1,7 @@
 package kz.kakimzhanova.parser.parser.sax;
 
 import kz.kakimzhanova.parser.entity.Paper;
+import kz.kakimzhanova.parser.parser.PaperEnum;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -75,7 +76,7 @@ public class PaperHandler extends DefaultHandler {
                     }
                     break;
                 case SUBSCRIPTION:
-                    current.getChars().setSubscriptionIndex(Boolean.valueOf(s));
+                    current.getChars().setSubscription(Boolean.valueOf(s));
                     break;
                 default:
                     throw new EnumConstantNotPresentException(  currentEnum.getDeclaringClass(), "No such Enum: " + s);
