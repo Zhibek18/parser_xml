@@ -8,13 +8,14 @@
             <sequence>
                 <element    name="paper"
                             type="tns:Paper"
-                            minOccurs="2"
+                            minOccurs="16"
                             maxOccurs="unbounded"/>
             </sequence>
         </complexType>
     </element>
     <complexType name="Paper">
         <sequence>
+            <element name="date" type="date"/>
             <element name="chars"
                         type="tns:Chars"
             />
@@ -22,7 +23,7 @@
         <attribute name="title" use="required">
             <simpleType>
                 <restriction base="ID">
-                    <pattern value="[A-Z][a-z]{2,20}"/>
+                    <pattern value="[A-Z][A-Za-z]{2,20}"/>
                 </restriction>
             </simpleType>
         </attribute>
@@ -41,8 +42,8 @@
         <sequence>
             <element name="color" type="boolean"/>
             <element name="volume" type="positiveInteger"/>
-            <element name="glossy" type="boolean" default="false"/>
-            <element name="subscription" type="boolean" default="false"/>
+            <element name="glossy" type="boolean"/>
+            <element name="subscription" type="boolean"/>
         </sequence>
     </complexType>
 </schema>

@@ -16,22 +16,33 @@ import java.io.IOException;
 
 public class Validator {
     private static Logger logger = LogManager.getLogger();
-    public static void main(String[] args) {
-        String filename = new File("src/main/resources/papers.xml").getAbsolutePath();
-        String schemaname = new File("src/main/resources/papers.xsd").getAbsolutePath();
+    public boolean validate(String fileName) {
+        boolean isValid;
+        String schemaName = new File("src/main/resources/papers.xsd").getAbsolutePath();
         Schema schema;
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         SchemaFactory factory = SchemaFactory.newInstance(language);
         try{
-            schema = factory.newSchema(new File(schemaname));
+            schema = factory.newSchema(new File(schemaName));
             SAXParserFactory spf = SAXParserFactory.newInstance();
             spf.setNamespaceAware(true);
             spf.setSchema(schema);
             SAXParser parser = spf.newSAXParser();
-            parser.parse(filename, new PaperErrorHandler());
-            logger.log(Level.INFO, filename + " is valid " + schemaname);
-        } catch (SAXException | ParserConfigurationException | IOException e) {
+            isValid = parse(parser, fileName);
+
+        } catch (SAXException | ParserConfigurationException e) {
             logger.log(Level.WARN, e);
+            isValid = false;
         }
+
+        return isValid;
+    }
+    private boolean parse(SAXParser parser, String fileName){
+        try {
+            parser.parse(fileName, new PaperErrorHandler());
+        }catch (SAXException | IOException e){
+            return false;
+        }
+        return true;
     }
 }

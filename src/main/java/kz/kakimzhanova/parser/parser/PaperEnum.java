@@ -8,6 +8,7 @@ public enum PaperEnum {
     MONTHLY("monthly"),
     CHARS("chars"),
     COLOR("color"),
+    DATE("date"),
     VOLUME("volume"),
     GLOSSY("glossy"),
     SUBSCRIPTION("subscription");

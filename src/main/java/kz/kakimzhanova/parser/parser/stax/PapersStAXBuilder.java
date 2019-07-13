@@ -72,8 +72,15 @@ public class PapersStAXBuilder extends AbstractPaperBuilder {
             switch (type){
                 case XMLStreamConstants.START_ELEMENT:
                     name = reader.getLocalName();
-                    if (PaperEnum.valueOf(name.toUpperCase())== PaperEnum.CHARS){
-                        paper.setChars(getXMLChars(reader));
+                    switch (PaperEnum.valueOf(name.toUpperCase())){
+                        case CHARS:
+                            paper.setChars(getXMLChars(reader));
+                            break;
+                        case DATE:
+                            paper.setDate(getXMLText(reader));
+                            break;
+                        default:
+                            break;
                     }
                     break;
                 case XMLStreamConstants.END_ELEMENT:
@@ -81,8 +88,6 @@ public class PapersStAXBuilder extends AbstractPaperBuilder {
                     if (PaperEnum.valueOf(name.toUpperCase()) == PaperEnum.PAPER){
                         return paper;
                     }
-                    break;
-                case XMLStreamConstants.CHARACTERS:
                     break;
                 default:
                     break;
@@ -124,8 +129,6 @@ public class PapersStAXBuilder extends AbstractPaperBuilder {
                         return chars;
                     }
                     break;
-                case XMLStreamConstants.CHARACTERS:
-                    break;
                 default:
                     break;
             }
@@ -135,10 +138,8 @@ public class PapersStAXBuilder extends AbstractPaperBuilder {
     private String getXMLText(XMLStreamReader reader) throws XMLStreamException {
         String text = null;
         if (reader.hasNext()){
-            int type = reader.next();
-            if (type != XMLStreamConstants.END_ELEMENT) {
-                text = reader.getText();
-            }
+            reader.next();
+            text = reader.getText();
         }
         return text;
     }

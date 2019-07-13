@@ -10,7 +10,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -53,6 +52,7 @@ public class PapersDOMBuilder extends AbstractPaperBuilder {
         if (paperElement.hasAttribute("monthly")){
             paper.setMonthly(Boolean.valueOf(paperElement.getAttribute("monthly")));
         }
+        paper.setDate(getElementTextContent(paperElement, "date"));
         Paper.Chars chars = paper.getChars();
         Element charsElement = (Element) paperElement.getElementsByTagName("chars").item(0);
         chars.setColor(Boolean.valueOf(getElementTextContent(charsElement, "color")));

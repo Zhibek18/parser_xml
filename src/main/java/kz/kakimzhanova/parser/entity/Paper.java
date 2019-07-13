@@ -1,10 +1,14 @@
 package kz.kakimzhanova.parser.entity;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Paper {
     private String title;
     private String type;
     private boolean monthly;
     private Chars chars;
+    private LocalDate date;
     public String getTitle(){
         return title;
     }
@@ -13,11 +17,22 @@ public class Paper {
         chars = new Chars();
     }
 
-    public Paper(String title, String type, boolean monthly, boolean color, int volume, boolean glossy, boolean subscription) {
+    public Paper(String title, String type, boolean monthly, boolean color, int volume, boolean glossy, boolean subscription, String date) {
         this.title = title;
         this.type = type;
         this.monthly = monthly;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.date = LocalDate.parse(date,formatter);
         this.chars = new Chars(color,volume,  glossy, subscription);
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.date = LocalDate.parse(date,formatter);
     }
 
     public String getType() {
@@ -39,7 +54,7 @@ public class Paper {
     public void setMonthly(boolean monthly) {
         this.monthly = monthly;
     }
-    
+
     public Chars getChars(){
         return chars;
     }
@@ -122,6 +137,8 @@ public class Paper {
         stringBuilder.append(type);
         stringBuilder.append("\n\tmonthly=");
         stringBuilder.append(monthly);
+        stringBuilder.append("\n\tdate=");
+        stringBuilder.append(date);
         stringBuilder.append(chars);
         stringBuilder.append("\n}");
         return stringBuilder.toString();

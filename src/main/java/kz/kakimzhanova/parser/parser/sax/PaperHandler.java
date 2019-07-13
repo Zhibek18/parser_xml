@@ -9,7 +9,6 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,7 +33,7 @@ public class PaperHandler extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if("paper".equals(localName)){
             current = new Paper();
-            Pattern titlePattern = Pattern.compile("[A-Z][a-z]+");
+            Pattern titlePattern = Pattern.compile("[A-Z]\\w+");
             Pattern monthlyPattern = Pattern.compile("(true|false)");
             Pattern typePattern = Pattern.compile("(newspaper|magazine|booklet)");
             for (int i = 0; i < attributes.getLength(); i++){
@@ -71,9 +70,12 @@ public class PaperHandler extends DefaultHandler {
 
     @Override
     public void characters(char[] ch, int start, int length) {
-        String s = new String(ch, start, length);
+        String s = new String(ch, start, length).trim();
         if ((currentEnum != null)&&(current != null)){
             switch (currentEnum){
+                case DATE:
+                    current.setDate(s);
+                    break;
                 case COLOR:
                     current.getChars().setColor(Boolean.valueOf(s));
                     break;

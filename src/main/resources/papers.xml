@@ -3,6 +3,7 @@
           xmlns="http://www.example.com/papers"
           xsi:schemaLocation="http://www.example.com/papers papers.xsd">
     <paper type="newspaper" title="Times" monthly="true">
+        <date>2019-07-13</date>
         <chars>
             <color>false</color>
             <volume>50</volume>
@@ -11,6 +12,7 @@
         </chars>
     </paper>
     <paper title="Cosmopolitan" type="magazine" monthly="true">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>60</volume>
@@ -19,14 +21,16 @@
         </chars>
     </paper>
     <paper title="Space" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>7</volume>
             <glossy>true</glossy>
-            <subscription></subscription>
+            <subscription>false</subscription>
         </chars>
     </paper>
     <paper title="Guardian" type="newspaper">
+        <date>2019-07-13</date>
         <chars>
             <color>false</color>
             <volume>30</volume>
@@ -35,14 +39,16 @@
         </chars>
     </paper>
     <paper title="Music" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>10</volume>
             <glossy>false</glossy>
-            <subscription></subscription>
+            <subscription>false</subscription>
         </chars>
     </paper>
     <paper title="Science" type="magazine">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>40</volume>
@@ -51,6 +57,7 @@
         </chars>
     </paper>
     <paper title="News" type="newspaper">
+        <date>2019-07-13</date>
         <chars>
             <color>false</color>
             <volume>44</volume>
@@ -59,30 +66,34 @@
         </chars>
     </paper>
     <paper title="Dance" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>11</volume>
             <glossy>false</glossy>
-            <subscription></subscription>
+            <subscription>false</subscription>
         </chars>
     </paper>
-    <paper title="Hair" type="booklet">
+    <paper title="HaiR" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>3</volume>
             <glossy>true</glossy>
-            <subscription></subscription>
+            <subscription>false</subscription>
         </chars>
     </paper>
     <paper title="Glass" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>10</volume>
             <glossy>false</glossy>
-            <subscription></subscription>
+            <subscription>false</subscription>
         </chars>
     </paper>
     <paper title="Techno" type="magazine">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>50</volume>
@@ -91,6 +102,7 @@
         </chars>
     </paper>
     <paper title="Nature" type="magazine">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>54</volume>
@@ -99,6 +111,7 @@
         </chars>
     </paper>
     <paper title="Paint" type="magazine">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>40</volume>
@@ -107,6 +120,7 @@
         </chars>
     </paper>
     <paper title="Cream" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>16</volume>
@@ -115,19 +129,21 @@
         </chars>
     </paper>
     <paper title="Zoo" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>false</color>
             <volume>10</volume>
             <glossy>false</glossy>
-            <subscription></subscription>
+            <subscription>false</subscription>
         </chars>
     </paper>
     <paper title="Guitar" type="booklet">
+        <date>2019-07-13</date>
         <chars>
             <color>true</color>
             <volume>4</volume>
             <glossy>true</glossy>
-            <subscription></subscription>
+            <subscription>false</subscription>
         </chars>
     </paper>
 </papers>
