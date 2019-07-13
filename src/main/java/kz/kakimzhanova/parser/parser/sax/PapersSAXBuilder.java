@@ -9,7 +9,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 public class PapersSAXBuilder extends AbstractPaperBuilder {
     private static Logger logger = LogManager.getLogger();
@@ -25,7 +25,7 @@ public class PapersSAXBuilder extends AbstractPaperBuilder {
         }
     }
 
-    public Set<Paper> buildSetPapers(String filename){
+    public List<Paper> buildSetPapers(String filename){
         try{
             reader.parse(filename);
         } catch (SAXException| IOException e) {

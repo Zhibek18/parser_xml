@@ -15,7 +15,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 public class PapersDOMBuilder extends AbstractPaperBuilder {
     private static Logger logger = LogManager.getLogger();
@@ -29,7 +29,7 @@ public class PapersDOMBuilder extends AbstractPaperBuilder {
         }
     }
 
-    public Set<Paper> buildSetPapers(String fileName){
+    public List<Paper> buildSetPapers(String fileName){
         Document document;
         try{
             document = documentBuilder.parse(fileName);

@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
 
 public class PapersStAXBuilder extends AbstractPaperBuilder {
     private static Logger logger = LogManager.getLogger();
@@ -24,7 +24,7 @@ public class PapersStAXBuilder extends AbstractPaperBuilder {
         inputFactory = XMLInputFactory.newInstance();
     }
 
-    public Set<Paper> buildSetPapers(String fileName){
+    public List<Paper> buildSetPapers(String fileName){
         FileInputStream inputStream = null;
         XMLStreamReader reader;
         String name;

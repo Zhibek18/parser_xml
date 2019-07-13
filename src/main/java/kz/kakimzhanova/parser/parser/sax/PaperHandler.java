@@ -10,25 +10,23 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PaperHandler extends DefaultHandler {
     private static Logger logger = LogManager.getLogger();
-    private Set<Paper> papers;
+    private List<Paper> papers;
     private Paper current = null;
     private PaperEnum currentEnum = null;
     private EnumSet<PaperEnum> withText;
 
     public PaperHandler() {
-        papers = new HashSet<>();
+        papers = new ArrayList<>();
         withText = EnumSet.range(PaperEnum.COLOR, PaperEnum.SUBSCRIPTION);
     }
 
-    public Set<Paper> getPapers(){
+    public List<Paper> getPapers(){
         return papers;
     }
 

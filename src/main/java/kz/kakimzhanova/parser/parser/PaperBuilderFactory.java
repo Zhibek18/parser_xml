@@ -4,8 +4,8 @@ import kz.kakimzhanova.parser.parser.dom.PapersDOMBuilder;
 import kz.kakimzhanova.parser.parser.sax.PapersSAXBuilder;
 import kz.kakimzhanova.parser.parser.stax.PapersStAXBuilder;
 
-class PaperBuilderFactory {
-    AbstractPaperBuilder createPaperBuilder(String parserType){
+public class PaperBuilderFactory {
+    public AbstractPaperBuilder createPaperBuilder(String parserType){
         ParserType type = ParserType.valueOf(parserType.toUpperCase());
         switch (type){
             case DOM:

@@ -2,18 +2,18 @@ package kz.kakimzhanova.parser.parser;
 
 import kz.kakimzhanova.parser.entity.Paper;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractPaperBuilder {
-    protected Set <Paper> papers;
+    protected List <Paper> papers;
     protected AbstractPaperBuilder(){
-        papers = new HashSet<>();
+        papers = new ArrayList<>();
     }
 
-    public Set<Paper> getPapers() {
+    public List<Paper> getPapers() {
         return papers;
     }
 
-    public abstract Set<Paper> buildSetPapers(String fileName);
+    public abstract List<Paper> buildSetPapers(String fileName);
 }

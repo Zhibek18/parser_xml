@@ -4,9 +4,20 @@ public class Paper {
     private String title;
     private String type;
     private boolean monthly;
-    private Chars chars = new Chars();
+    private Chars chars;
     public String getTitle(){
         return title;
+    }
+
+    public Paper() {
+        chars = new Chars();
+    }
+
+    public Paper(String title, String type, boolean monthly, boolean color, int volume, boolean glossy, boolean subscription) {
+        this.title = title;
+        this.type = type;
+        this.monthly = monthly;
+        this.chars = new Chars(color,volume,  glossy, subscription);
     }
 
     public String getType() {
@@ -42,6 +53,15 @@ public class Paper {
         private int volume;
         private boolean glossy;
         private boolean subscription;
+
+        public Chars() { }
+
+        public Chars(boolean color, int volume, boolean glossy, boolean subscription) {
+            this.color = color;
+            this.volume = volume;
+            this.glossy = glossy;
+            this.subscription = subscription;
+        }
 
         public boolean isColor() {
             return color;
