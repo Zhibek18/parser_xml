@@ -18,11 +18,10 @@ public class PaperHandler extends DefaultHandler {
     private List<Paper> papers;
     private Paper current = null;
     private PaperEnum currentEnum = null;
-    private EnumSet<PaperEnum> withText;
+    private EnumSet<PaperEnum> withText = EnumSet.range(PaperEnum.COLOR, PaperEnum.SUBSCRIPTION);
 
     public PaperHandler() {
         papers = new ArrayList<>();
-        withText = EnumSet.range(PaperEnum.COLOR, PaperEnum.SUBSCRIPTION);
     }
 
     public List<Paper> getPapers(){
@@ -71,7 +70,7 @@ public class PaperHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) {
         String s = new String(ch, start, length).trim();
-        if ((currentEnum != null)&&(current != null)){
+        if (currentEnum != null){
             switch (currentEnum){
                 case DATE:
                     current.setDate(s);
