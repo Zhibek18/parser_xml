@@ -1,6 +1,7 @@
 package kz.kakimzhanova.parser.parser.stax;
 
 import kz.kakimzhanova.parser.entity.Paper;
+import kz.kakimzhanova.parser.parser.AbstractPaperBuilder;
 import kz.kakimzhanova.parser.parser.PaperEnum;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -14,22 +15,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Set;
 
-public class PapersStaxBuilder {
+public class PapersStAXBuilder extends AbstractPaperBuilder {
     private static Logger logger = LogManager.getLogger();
-    private HashSet<Paper> papers = new HashSet<>();
     private XMLInputFactory inputFactory;
-    public PapersStaxBuilder(){
+    public PapersStAXBuilder(){
         inputFactory = XMLInputFactory.newInstance();
     }
 
-    public Set<Paper> getPapers(){
-        return papers;
-    }
-
-    public void buildSetPapers(String fileName){
+    public Set<Paper> buildSetPapers(String fileName){
         FileInputStream inputStream = null;
         XMLStreamReader reader;
         String name;
@@ -40,7 +35,6 @@ public class PapersStaxBuilder {
                 int type = reader.next();
                 if (type == XMLStreamConstants.START_ELEMENT){
                     name = reader.getLocalName();
-                    //logger.log(Level.DEBUG, name);
                     if (PaperEnum.valueOf(name.toUpperCase()) == PaperEnum.PAPER){
                         Paper paper = buildPaper(reader);
 
@@ -48,20 +42,23 @@ public class PapersStaxBuilder {
                     }
                 }
             }
+
         } catch (FileNotFoundException | XMLStreamException e) {
             logger.log(Level.WARN, e);
         } finally {
             try {
                 if (inputStream != null){
                     inputStream.close();
+
                 }
             } catch (IOException e) {
                 logger.log(Level.WARN, e);
             }
         }
+        return papers;
     }
 
-    public Paper buildPaper(XMLStreamReader reader) throws XMLStreamException {
+    private Paper buildPaper(XMLStreamReader reader) throws XMLStreamException {
         Paper paper = new Paper();
         paper.setTitle(reader.getAttributeValue(null, PaperEnum.TITLE.getValue()));
         paper.setType(reader.getAttributeValue(null, PaperEnum.TYPE.getValue()));
@@ -75,31 +72,27 @@ public class PapersStaxBuilder {
             switch (type){
                 case XMLStreamConstants.START_ELEMENT:
                     name = reader.getLocalName();
-                    //logger.log(Level.DEBUG, "start element:" + name);
                     if (PaperEnum.valueOf(name.toUpperCase())== PaperEnum.CHARS){
                         paper.setChars(getXMLChars(reader));
                     }
                     break;
                 case XMLStreamConstants.END_ELEMENT:
                     name = reader.getLocalName();
-                    //logger.log(Level.DEBUG, "end element:" + name);
                     if (PaperEnum.valueOf(name.toUpperCase()) == PaperEnum.PAPER){
                         return paper;
                     }
                     break;
                 case XMLStreamConstants.CHARACTERS:
-                    //logger.log(Level.INFO, "Character:");
                     break;
                 default:
-                    //logger.log(Level.INFO, "Unknown element in tag Paper - " + type);
                     break;
             }
         }
         throw new XMLStreamException("Unknown element in tag Paper");
     }
 
-    public Paper.Chars getXMLChars(XMLStreamReader reader) throws XMLStreamException {
-        Paper.Chars chars = new Paper().new Chars(); //??
+    private Paper.Chars getXMLChars(XMLStreamReader reader) throws XMLStreamException {
+        Paper.Chars chars = new Paper().new Chars();
         int type;
         String name;
 
@@ -108,7 +101,6 @@ public class PapersStaxBuilder {
             switch (type){
                 case XMLStreamConstants.START_ELEMENT:
                     name = reader.getLocalName();
-                    //logger.log(Level.DEBUG, "start element" + name);
                     switch (PaperEnum.valueOf(name.toUpperCase())){
                         case COLOR:
                             chars.setColor(Boolean.valueOf(getXMLText(reader)));
@@ -123,22 +115,18 @@ public class PapersStaxBuilder {
                             chars.setSubscription(Boolean.valueOf(getXMLText(reader)));
                             break;
                         default:
-                            //logger.log(Level.WARN,"Element type: " + type);
                             break;
                     }
                     break;
                 case XMLStreamConstants.END_ELEMENT:
                     name = reader.getLocalName();
-                    //logger.log(Level.DEBUG, "end element" + name);
                     if (PaperEnum.valueOf(name.toUpperCase()) == PaperEnum.CHARS){
                         return chars;
                     }
                     break;
                 case XMLStreamConstants.CHARACTERS:
-                    //logger.log(Level.INFO, "character");
                     break;
                 default:
-                    //logger.log(Level.WARN, "Element type: " + type);
                     break;
             }
         }
@@ -150,10 +138,6 @@ public class PapersStaxBuilder {
             int type = reader.next();
             if (type != XMLStreamConstants.END_ELEMENT) {
                 text = reader.getText();
-                //logger.log(Level.DEBUG, "type=" + type + "text=" + text);
-            }
-            else {
-                logger.log(Level.WARN, "Empty element");
             }
         }
         return text;

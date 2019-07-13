@@ -28,6 +28,7 @@ public class Paper {
     public void setMonthly(boolean monthly) {
         this.monthly = monthly;
     }
+    
     public Chars getChars(){
         return chars;
     }
@@ -76,22 +77,33 @@ public class Paper {
 
         @Override
         public String toString() {
-            return "Chars{" +
-                    "color=" + color +
-                    ", volume=" + volume +
-                    ", glossy=" + glossy +
-                    ", subscription=" + subscription +
-                    '}';
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("\n\tChars{");
+            stringBuilder.append("\n\t\tcolor=");
+            stringBuilder.append(color);
+            stringBuilder.append("\n\t\tvolume=");
+            stringBuilder.append(volume);
+            stringBuilder.append("\n\t\tglossy=");
+            stringBuilder.append(glossy);
+            stringBuilder.append("\n\t\tsubscription=");
+            stringBuilder.append(subscription);
+            stringBuilder.append("\n\t}");
+            return stringBuilder.toString();
         }
     }
 
     @Override
     public String toString() {
-        return "Paper{" +
-                "title='" + title + '\'' +
-                ", type='" + type + '\'' +
-                ", monthly=" + monthly +
-                ", chars=" + chars +
-                '}' + "\n";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\nPaper{");
+        stringBuilder.append("\n\ttitle=");
+        stringBuilder.append(title);
+        stringBuilder.append("\n\ttype=");
+        stringBuilder.append(type);
+        stringBuilder.append("\n\tmonthly=");
+        stringBuilder.append(monthly);
+        stringBuilder.append(chars);
+        stringBuilder.append("\n}");
+        return stringBuilder.toString();
     }
 }

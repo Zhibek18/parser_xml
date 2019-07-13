@@ -1,6 +1,5 @@
 package kz.kakimzhanova.parser.validator;
 
-import kz.kakimzhanova.parser.handler.PaperErrorHandler;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,7 +19,7 @@ public class Validator {
     public static void main(String[] args) {
         String filename = new File("src/main/resources/papers.xml").getAbsolutePath();
         String schemaname = new File("src/main/resources/papers.xsd").getAbsolutePath();
-        Schema schema = null;
+        Schema schema;
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         SchemaFactory factory = SchemaFactory.newInstance(language);
         try{

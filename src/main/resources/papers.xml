@@ -2,12 +2,12 @@
 <papers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns="http://www.example.com/papers"
           xsi:schemaLocation="http://www.example.com/papers papers.xsd">
-    <paper title="Times" type="newspaper" monthly="true">
+    <paper type="newspaper" title="Times" monthly="true">
         <chars>
             <color>false</color>
             <volume>50</volume>
             <glossy>false</glossy>
-            <subscription>true</subscription>    <!--subscription index-->
+            <subscription>true</subscription>
         </chars>
     </paper>
     <paper title="Cosmopolitan" type="magazine" monthly="true">
@@ -15,13 +15,117 @@
             <color>true</color>
             <volume>60</volume>
             <glossy>true</glossy>
-            <subscription>true</subscription>    <!--subscription index-->
+            <subscription>true</subscription>
         </chars>
     </paper>
     <paper title="Space" type="booklet">
         <chars>
             <color>true</color>
             <volume>7</volume>
+            <glossy>true</glossy>
+            <subscription></subscription>
+        </chars>
+    </paper>
+    <paper title="Guardian" type="newspaper">
+        <chars>
+            <color>false</color>
+            <volume>30</volume>
+            <glossy>false</glossy>
+            <subscription>true</subscription>
+        </chars>
+    </paper>
+    <paper title="Music" type="booklet">
+        <chars>
+            <color>true</color>
+            <volume>10</volume>
+            <glossy>false</glossy>
+            <subscription></subscription>
+        </chars>
+    </paper>
+    <paper title="Science" type="magazine">
+        <chars>
+            <color>true</color>
+            <volume>40</volume>
+            <glossy>true</glossy>
+            <subscription>true</subscription>
+        </chars>
+    </paper>
+    <paper title="News" type="newspaper">
+        <chars>
+            <color>false</color>
+            <volume>44</volume>
+            <glossy>false</glossy>
+            <subscription>true</subscription>
+        </chars>
+    </paper>
+    <paper title="Dance" type="booklet">
+        <chars>
+            <color>true</color>
+            <volume>11</volume>
+            <glossy>false</glossy>
+            <subscription></subscription>
+        </chars>
+    </paper>
+    <paper title="Hair" type="booklet">
+        <chars>
+            <color>true</color>
+            <volume>3</volume>
+            <glossy>true</glossy>
+            <subscription></subscription>
+        </chars>
+    </paper>
+    <paper title="Glass" type="booklet">
+        <chars>
+            <color>true</color>
+            <volume>10</volume>
+            <glossy>false</glossy>
+            <subscription></subscription>
+        </chars>
+    </paper>
+    <paper title="Techno" type="magazine">
+        <chars>
+            <color>true</color>
+            <volume>50</volume>
+            <glossy>false</glossy>
+            <subscription>true</subscription>
+        </chars>
+    </paper>
+    <paper title="Nature" type="magazine">
+        <chars>
+            <color>true</color>
+            <volume>54</volume>
+            <glossy>true</glossy>
+            <subscription>true</subscription>
+        </chars>
+    </paper>
+    <paper title="Paint" type="magazine">
+        <chars>
+            <color>true</color>
+            <volume>40</volume>
+            <glossy>true</glossy>
+            <subscription>false</subscription>
+        </chars>
+    </paper>
+    <paper title="Cream" type="booklet">
+        <chars>
+            <color>true</color>
+            <volume>16</volume>
+            <glossy>false</glossy>
+            <subscription>true</subscription>
+        </chars>
+    </paper>
+    <paper title="Zoo" type="booklet">
+        <chars>
+            <color>false</color>
+            <volume>10</volume>
+            <glossy>false</glossy>
+            <subscription></subscription>
+        </chars>
+    </paper>
+    <paper title="Guitar" type="booklet">
+        <chars>
+            <color>true</color>
+            <volume>4</volume>
             <glossy>true</glossy>
             <subscription></subscription>
         </chars>

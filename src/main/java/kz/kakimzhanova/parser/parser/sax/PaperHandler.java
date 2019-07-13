@@ -7,11 +7,14 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PaperHandler extends DefaultHandler {
     private static Logger logger = LogManager.getLogger();
@@ -31,13 +34,26 @@ public class PaperHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        //logger.log(Level.INFO, "start element " + localName + " current: " + currentEnum);
         if("paper".equals(localName)){
             current = new Paper();
-            current.setTitle(attributes.getValue(0));//add atributes checking
-            current.setType(attributes.getValue(1));
-            if (attributes.getLength() == 3){
-                current.setMonthly(Boolean.valueOf(attributes.getValue(2)));
+            Pattern titlePattern = Pattern.compile("[A-Z][a-z]+");
+            Pattern monthlyPattern = Pattern.compile("(true|false)");
+            Pattern typePattern = Pattern.compile("(newspaper|magazine|booklet)");
+            for (int i = 0; i < attributes.getLength(); i++){
+                String value = attributes.getValue(i);
+                Matcher titleMatcher = titlePattern.matcher(value);
+                Matcher monthlyMatcher = monthlyPattern.matcher(value);
+                Matcher typeMatcher = typePattern.matcher(value);
+                if (titleMatcher.matches()) {
+                    current.setTitle(value);
+                } else if (typeMatcher.matches()){
+                    current.setType(value);
+                } else if ((attributes.getLength() == 3)&&(monthlyMatcher.matches())){
+                    current.setMonthly(Boolean.valueOf(value));
+                }else {
+                    throw new SAXNotRecognizedException("wrong attribute value " + value);
+                }
+
             }
         } else {
             PaperEnum tmp = PaperEnum.valueOf(localName.toUpperCase());
@@ -53,13 +69,11 @@ public class PaperHandler extends DefaultHandler {
             papers.add(current);
         }
         currentEnum = null;
-        //logger.log(Level.INFO, "end element " + current);
     }
 
     @Override
     public void characters(char[] ch, int start, int length) {
         String s = new String(ch, start, length);
-        //logger.log(Level.INFO, currentEnum + " s=" + s);
         if ((currentEnum != null)&&(current != null)){
             switch (currentEnum){
                 case COLOR:

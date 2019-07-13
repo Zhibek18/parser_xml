@@ -1,6 +1,7 @@
 package kz.kakimzhanova.parser.parser.dom;
 
 import kz.kakimzhanova.parser.entity.Paper;
+import kz.kakimzhanova.parser.parser.AbstractPaperBuilder;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,15 +15,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Set;
 
-public class PapersDOMBuilder {
+public class PapersDOMBuilder extends AbstractPaperBuilder {
     private static Logger logger = LogManager.getLogger();
-    private Set<Paper> papers;
     private DocumentBuilder documentBuilder;
     public PapersDOMBuilder(){
-        this.papers = new HashSet<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try{
             documentBuilder = factory.newDocumentBuilder();
@@ -31,12 +29,8 @@ public class PapersDOMBuilder {
         }
     }
 
-    public Set<Paper> getPapers(){
-        return papers;
-    }
-
-    public void buildSetPapers(String fileName){
-        Document document = null;
+    public Set<Paper> buildSetPapers(String fileName){
+        Document document;
         try{
             document = documentBuilder.parse(fileName);
             Element root = document.getDocumentElement();
@@ -49,9 +43,10 @@ public class PapersDOMBuilder {
         } catch (SAXException | IOException e) {
             logger.log(Level.WARN, e);
         }
+        return papers;
     }
 
-    public Paper buildPaper(Element paperElement){
+    private Paper buildPaper(Element paperElement){
         Paper paper = new Paper();
         paper.setTitle(paperElement.getAttribute("title"));
         paper.setType(paperElement.getAttribute("type"));
@@ -67,11 +62,10 @@ public class PapersDOMBuilder {
         return paper;
     }
 
-    public static String getElementTextContent(Element element, String elementName){
+    private static String getElementTextContent(Element element, String elementName){
         NodeList nodeList = element.getElementsByTagName(elementName);
         Node node = nodeList.item(0);
-        String text = node.getTextContent();
-        return text;
+        return node.getTextContent();
     }
 
 }

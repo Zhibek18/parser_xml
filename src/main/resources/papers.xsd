@@ -22,7 +22,7 @@
         <attribute name="title" use="required">
             <simpleType>
                 <restriction base="ID">
-                    <pattern value="([\w]+){2,20}"/>
+                    <pattern value="[A-Z][a-z]{2,20}"/>
                 </restriction>
             </simpleType>
         </attribute>
