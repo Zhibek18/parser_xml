@@ -9,9 +9,6 @@ public class Paper {
     private boolean monthly;
     private Chars chars;
     private LocalDate date;
-    public String getTitle(){
-        return title;
-    }
 
     public Paper() {
         chars = new Chars();
@@ -24,6 +21,10 @@ public class Paper {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         this.date = LocalDate.parse(date,formatter);
         this.chars = new Chars(color,volume,  glossy, subscription);
+    }
+
+    public String getTitle(){
+        return title;
     }
 
     public LocalDate getDate() {

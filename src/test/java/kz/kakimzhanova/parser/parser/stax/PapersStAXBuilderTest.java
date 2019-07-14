@@ -5,12 +5,9 @@ import kz.kakimzhanova.parser.parser.AbstractPaperBuilder;
 import kz.kakimzhanova.parser.parser.PaperBuilderFactory;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class PapersStAXBuilderTest {
     private static final String fileName = new File("src/main/resources/papers.xml").getAbsolutePath();

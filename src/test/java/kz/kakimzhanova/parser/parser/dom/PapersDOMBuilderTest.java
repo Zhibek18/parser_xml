@@ -1,22 +1,14 @@
 package kz.kakimzhanova.parser.parser.dom;
 
-import com.sun.xml.internal.ws.resources.ProviderApiMessages;
 import kz.kakimzhanova.parser.entity.Paper;
 import kz.kakimzhanova.parser.parser.AbstractPaperBuilder;
 import kz.kakimzhanova.parser.parser.PaperBuilderFactory;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.io.File;
 import java.util.*;
 
-import static org.junit.Assert.*;
-
 public class PapersDOMBuilderTest {
-    private static Logger logger = LogManager.getLogger();
     private static final String fileName = new File("src/main/resources/papers.xml").getAbsolutePath();
     @Test
     public void buildSetPapers() {
